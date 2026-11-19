@@ -1,5 +1,13 @@
 const gameScreen = document.querySelector("#game-screen");
-
+//let figure = [];
+/**
+ * function to create a new random figure
+ * random must be inside of the function
+ */
+let nextFigure = () => {
+  random = Math.floor(Math.random() * 7); // must be here
+  figure = new Figure(shapes[random]);
+};
 //all the possible geometrical shapes for the game
 const shapes = [
   { name: "O", coordinates: [0, 1, 10, 11], rotation: [+2, +2, +2, +2] },
@@ -13,17 +21,12 @@ const shapes = [
 
 const cells = [];
 //creating a grid of divs and pushing them to the array "cells"
-
-const random = Math.floor(Math.random() * 7);
-
 for (let i = 0; i < 200; i++) {
   const cell = document.createElement("div");
   cell.className = "cell";
   cells.push(cell);
   gameScreen.append(cell);
 }
-//
-const figure = new Figure(shapes[random]);
 
 //listeners
 document.addEventListener("keydown", (event) => {
@@ -33,3 +36,8 @@ document.addEventListener("keydown", (event) => {
     figure.moveRight();
   }
 });
+
+/**
+ * calling the function to start the figures to drop
+ */
+nextFigure();

@@ -25,6 +25,15 @@ class Figure {
       cells[currentPosition].classList.remove("active");
     });
   }
+  /**
+   * turns a figure to one that has finished its movement
+   */
+  turnToDropped() {
+    this.shape.coordinates.forEach((element) => {
+      const currentPosition = this.startPosition + element;
+      cells[currentPosition].classList.add("dropped");
+    });
+  }
 
   moveLeft() {
     if (this.checkLeft() && this.timer) {
@@ -67,9 +76,20 @@ class Figure {
     }
   }
 
+  /**
+   *
+   * @returns false if coordinate of the figure is too low or if coordiante is already taken
+   */
   checkBottom() {
     for (const coordinate of this.shape.coordinates) {
       if (coordinate + this.startPosition >= 189) {
+        return false;
+      }
+      if (
+        cells[coordinate + this.startPosition + 10].classList.contains(
+          "dropped",
+        )
+      ) {
         return false;
       }
     }
@@ -85,6 +105,9 @@ class Figure {
       } else {
         clearInterval(this.timer);
         this.timer = null;
+        this.undraw(); //clear the style
+        this.turnToDropped(); //set a style as a dropped figure
+        nextFigure(); //once one figure is dropped, drop a new one
       }
     }, 1000);
   }
