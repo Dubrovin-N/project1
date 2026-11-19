@@ -1,9 +1,11 @@
 //class to make the exact figure that will be shown on the screen
 class Figure {
   startPosition = 4;
+  timer = null;
   constructor(shape) {
     this.shape = shape;
     this.draw();
+    this.drop();
   }
 
   /**
@@ -25,11 +27,18 @@ class Figure {
   }
 
   moveLeft() {
-    if (this.startPosition >= 1) {
+    if (this.checkLeft() && this.timer) {
       this.undraw();
       this.startPosition--;
       this.draw();
     }
+  }
+
+  checkLeft() {
+    if (this.startPosition % 10 === 0) {
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -51,10 +60,32 @@ class Figure {
   //   });
   // }
   moveRight() {
-    if (this.checkRight()) {
+    if (this.checkRight() && this.timer) {
       this.undraw();
       this.startPosition++;
       this.draw();
     }
+  }
+
+  checkBottom() {
+    for (const coordinate of this.shape.coordinates) {
+      if (coordinate + this.startPosition >= 189) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  drop() {
+    this.timer = setInterval(() => {
+      if (this.checkBottom()) {
+        this.undraw();
+        this.startPosition += 10;
+        this.draw();
+      } else {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+    }, 1000);
   }
 }

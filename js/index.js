@@ -2,13 +2,13 @@ const gameScreen = document.querySelector("#game-screen");
 
 //all the possible geometrical shapes for the game
 const shapes = [
-  { name: "I", coordinates: [0, 1, 10, 11] },
-  { name: "O", coordinates: [0, 1, 2, 3] },
-  { name: "T", coordinates: [0, 1, 2, 11] },
-  { name: "S", coordinates: [1, 2, 10, 11] },
-  { name: "Z", coordinates: [0, 1, 11, 12] },
-  { name: "J", coordinates: [1, 11, 21, 20] },
-  { name: "L", coordinates: [0, 10, 20, 21] },
+  { name: "O", coordinates: [0, 1, 10, 11], rotation: [+2, +2, +2, +2] },
+  { name: "I", coordinates: [0, 1, 2, 3], rotation: [+2, +11, +20, +29] },
+  { name: "T", coordinates: [0, 1, 2, 11], rotation: [+2, +2, +2, +22] },
+  { name: "S", coordinates: [1, 2, 10, 11], rotation: [+2, +1, +2, +2] },
+  { name: "Z", coordinates: [0, 1, 11, 12], rotation: [+2, +2, +2, +2] },
+  { name: "J", coordinates: [1, 11, 21, 20], rotation: [+2, +2, +2, +2] },
+  { name: "L", coordinates: [0, 10, 20, 21], rotation: [+2, +2, +2, +2] },
 ];
 
 const cells = [];
