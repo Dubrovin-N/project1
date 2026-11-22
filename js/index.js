@@ -10,13 +10,58 @@ let nextFigure = () => {
 };
 //all the possible geometrical shapes for the game
 const shapes = [
-  { name: "O", coordinates: [0, 1, 10, 11], rotation: [+2, +2, +2, +2] },
-  { name: "I", coordinates: [0, 1, 2, 3], rotation: [+2, +11, +20, +29] },
-  { name: "T", coordinates: [0, 1, 2, 11], rotation: [+2, +2, +2, +22] },
-  { name: "S", coordinates: [1, 2, 10, 11], rotation: [+2, +1, +2, +2] },
-  { name: "Z", coordinates: [0, 1, 11, 12], rotation: [+2, +2, +2, +2] },
-  { name: "J", coordinates: [1, 11, 21, 20], rotation: [+2, +2, +2, +2] },
-  { name: "L", coordinates: [0, 10, 20, 21], rotation: [+2, +2, +2, +2] },
+  {
+    name: "O",
+    coordinates: [[0, 1, 10, 11]],
+  },
+  {
+    name: "I",
+    coordinates: [
+      [0, 1, 2, 3],
+      [0, 10, 20, 30],
+    ],
+  },
+  {
+    name: "T",
+    coordinates: [
+      [0, 1, 2, 11],
+      [1, 10, 11, 21],
+      [1, 10, 11, 12],
+      [1, 11, 12, 21],
+    ],
+  },
+  {
+    name: "S",
+    coordinates: [
+      [1, 2, 10, 11],
+      [0, 10, 11, 21],
+    ],
+  },
+  {
+    name: "Z",
+    coordinates: [
+      [0, 1, 11, 12],
+      [1, 10, 11, 20],
+    ],
+  },
+  {
+    name: "J",
+    coordinates: [
+      [1, 11, 21, 20],
+      [10, 20, 21, 22],
+      [0, 1, 10, 20],
+      [10, 11, 12, 22],
+    ],
+  },
+  {
+    name: "L",
+    coordinates: [
+      [0, 10, 20, 21],
+      [10, 11, 12, 20],
+      [0, 1, 11, 21],
+      [2, 10, 11, 12],
+    ],
+  },
 ];
 
 const cells = [];
@@ -34,6 +79,8 @@ document.addEventListener("keydown", (event) => {
     figure.moveLeft();
   } else if (event.key === "ArrowRight") {
     figure.moveRight();
+  } else if (event.key === "r") {
+    figure.rotate();
   }
 });
 
