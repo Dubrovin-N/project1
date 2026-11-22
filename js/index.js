@@ -1,4 +1,5 @@
 const gameScreen = document.querySelector("#game-screen");
+const game = new Game();
 //let figure = [];
 /**
  * function to create a new random figure
@@ -81,6 +82,8 @@ document.addEventListener("keydown", (event) => {
     figure.moveRight();
   } else if (event.key === "r") {
     figure.rotate();
+  } else if (event.key === "ArrowDown") {
+    figure.fastDrop();
   }
 });
 

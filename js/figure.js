@@ -128,7 +128,7 @@ class Figure {
         this.turnToDropped(); //set a style as a dropped figure
         nextFigure(); //once one figure is dropped, drop a new one
       }
-    }, 1000);
+    }, game.speed); //to change the speed in different levels
   }
   /**
    * check for if:
@@ -187,4 +187,12 @@ class Figure {
       console.log(this.i + "in rotate");
     }
   } */
+
+  fastDrop() {
+    if (this.checkBottom()) {
+      this.undraw();
+      this.startPosition += 10;
+      this.draw();
+    }
+  }
 }
