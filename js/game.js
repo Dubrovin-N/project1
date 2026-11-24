@@ -1,6 +1,6 @@
 class Game {
   speed = 1000;
-
+  points = 0;
   constructor(level) {
     this.level = level;
   }
@@ -28,8 +28,8 @@ class Game {
           // rerender the whole grid
 
           gameScreen.append(...cells);
-
-          console.log("hi");
+          this.points++;
+          console.log(this.points + "hi");
         }
       }
       toggle = 0;
