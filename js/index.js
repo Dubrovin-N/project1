@@ -1,5 +1,6 @@
 const gameScreen = document.querySelector("#game-screen");
 const game = new Game();
+let pause = false;
 //let figure = [];
 /**
  * function to create a new random figure
@@ -76,6 +77,14 @@ for (let i = 0; i < 200; i++) {
 
 //listeners
 document.addEventListener("keydown", (event) => {
+  if (event.key === "p") {
+    pause = !pause;
+    console.log("pause");
+  }
+  if (pause) {
+    return;
+  }
+
   if (event.key === "ArrowLeft") {
     figure.moveLeft();
   } else if (event.key === "ArrowRight") {

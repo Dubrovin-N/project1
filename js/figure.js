@@ -34,6 +34,8 @@ class Figure {
       const currentPosition = this.startPosition + element;
       cells[currentPosition].classList.add("dropped");
     });
+    //HERE WILL CLEAR ROWS
+    //   game.clearLevel();
   }
 
   moveLeft() {
@@ -117,7 +119,9 @@ class Figure {
 
   drop() {
     this.timer = setInterval(() => {
-      if (this.checkBottom()) {
+      if (pause === true) {
+        return;
+      } else if (this.checkBottom()) {
         this.undraw();
         this.startPosition += 10;
         this.draw();
