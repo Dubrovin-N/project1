@@ -35,7 +35,7 @@ class Figure {
       cells[currentPosition].classList.add("dropped");
     });
     //HERE WILL CLEAR ROWS
-    //   game.clearLevel();
+    game.clearLevel();
   }
 
   moveLeft() {

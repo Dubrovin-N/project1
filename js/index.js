@@ -72,8 +72,9 @@ for (let i = 0; i < 200; i++) {
   const cell = document.createElement("div");
   cell.className = "cell";
   cells.push(cell);
-  gameScreen.append(cell);
+  // gameScreen.append(cell); //change to spread
 }
+gameScreen.append(...cells);
 
 //listeners
 document.addEventListener("keydown", (event) => {
