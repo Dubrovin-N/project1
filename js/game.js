@@ -29,8 +29,10 @@ class Game {
           // rerender the whole grid
 
           gameScreen.append(...cells);
-          this.points++;
-          console.log(this.points + "hi");
+          this.points = this.points + 100;
+          scoreNmb.textContent = this.points;
+          console.log("😂" + this.points);
+          this.levelUp();
         }
       }
       toggle = 0;
@@ -69,6 +71,19 @@ class Game {
         i--;
       } */
     }, 10);
+  }
+
+  levelUp() {
+    if (this.points === 300) {
+      this.speed = 500;
+      levelNmb.textContent = "1";
+    } else if (this.points === 600) {
+      this.speed = 300;
+      levelNmb.textContent = "2";
+    } else if (this.points === 900) {
+      this.speed = 150;
+      levelNmb.textContent = "3";
+    }
   }
 }
 //rules?
