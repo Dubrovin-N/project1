@@ -87,6 +87,10 @@ gameScreen.append(...cells);
 startBtn.addEventListener("click", () => {
   startScreen.style.display = "none";
   gameWrapper.style.display = "block";
+  /**
+   * calling the function to start the figures to drop
+   */
+  nextFigure();
 });
 
 document.addEventListener("keydown", (event) => {
@@ -108,8 +112,3 @@ document.addEventListener("keydown", (event) => {
     figure.fastDrop();
   }
 });
-
-/**
- * calling the function to start the figures to drop
- */
-nextFigure();
