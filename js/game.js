@@ -1,6 +1,7 @@
 class Game {
   speed = 1000;
   points = 0;
+  interval = null;
   constructor(level) {
     this.level = level;
   }
@@ -34,6 +35,37 @@ class Game {
       }
       toggle = 0;
     }
+  }
+  //animation of the gameOver
+  gameOver() {
+    let i = 0;
+    let flag = false;
+    this.interval = setInterval(() => {
+      if (!flag && i < 200) {
+        cells[i].classList.add("dropped");
+        i++;
+      }
+      if (!flag && i === 200) {
+        flag = true;
+        i = 0;
+      } else if (flag && i < 200) {
+        cells[i].classList.remove("dropped");
+        i++;
+      } else if (flag && i === 200) {
+        clearInterval(this.interval);
+        gameScreen.style.display = "none";
+        finishScreen.style.display = "flex";
+      }
+
+      /*       cells[i].classList.add("dropped");
+      if (i < 199) {
+        i++;
+      }else if()
+      cells[i].classList.remove("dropped");
+      if (i >= 0) {
+        i--;
+      } */
+    }, 10);
   }
 }
 //rules?

@@ -1,4 +1,6 @@
+const startScreen = document.querySelector("#start-screen");
 const gameScreen = document.querySelector("#game-screen");
+const finishScreen = document.querySelector("#finish-screen");
 const game = new Game();
 let pause = false;
 //let figure = [];

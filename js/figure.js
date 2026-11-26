@@ -116,8 +116,29 @@ class Figure {
     }
     return true;
   }
+  //figure can't fall, no space left
+  blocked() {
+    for (const coordinate of this.shape.coordinates[this.i]) {
+      if (
+        cells[coordinate + this.startPosition].classList.contains("dropped")
+      ) {
+        return true;
+      }
+    }
+  }
 
   drop() {
+    /**
+     * blocked figure must:
+     * 1) turn to dropped style (as anyways it's dropped)
+     * 2) cause game.Gameover()
+     */
+    if (this.blocked()) {
+      this.undraw();
+      this.turnToDropped();
+      game.gameOver();
+      return;
+    }
     this.timer = setInterval(() => {
       if (pause === true) {
         return;
@@ -135,7 +156,7 @@ class Figure {
     }, game.speed); //to change the speed in different levels
   }
   /**
-   * check for if:
+   * CHECK FOR NEXT COORDINATES OF A SHAPE
    * 1) below the game field
    * 2) has some part in the most left or right column
    * 3) the cell is already taken
