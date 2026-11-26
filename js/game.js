@@ -53,8 +53,11 @@ class Game {
         i++;
       } else if (flag && i === 200) {
         clearInterval(this.interval);
-        gameScreen.style.display = "none";
+        gameWrapper.style.display = "none";
         finishScreen.style.display = "flex";
+        restartBtn.addEventListener("click", () => {
+          window.location.reload();
+        });
       }
 
       /*       cells[i].classList.add("dropped");

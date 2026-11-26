@@ -1,6 +1,9 @@
 const startScreen = document.querySelector("#start-screen");
+const startBtn = document.querySelector("#start-btn");
 const gameScreen = document.querySelector("#game-screen");
+const gameWrapper = document.querySelector("#game-wrapper");
 const finishScreen = document.querySelector("#finish-screen");
+const restartBtn = document.querySelector("#restart-btn");
 const game = new Game();
 let pause = false;
 //let figure = [];
@@ -79,6 +82,11 @@ for (let i = 0; i < 200; i++) {
 gameScreen.append(...cells);
 
 //listeners
+startBtn.addEventListener("click", () => {
+  startScreen.style.display = "none";
+  gameWrapper.style.display = "block";
+});
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "p") {
     pause = !pause;

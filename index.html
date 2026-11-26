@@ -9,11 +9,27 @@
   <body>
     <div id="start-screen">
       <h1>TETRIS</h1>
-      <h2>Instructions</h2>
+      <h2>
+        ⬅️ turn left <br />➡️ turn right <br />⬇️ speed up <br />
+        Ⓡ rotate<br />🅿️ pause
+      </h2>
       <button id="start-btn">START</button>
     </div>
-    <div id="game-screen"></div>
-    <div id="finish-screen">GAME OVER</div>
+    <div id="game-wrapper">
+      <div id="game-screen"></div>
+      <div id="sidebar">
+        <div id="game-score">score 0</div>
+        <div id="game-level">level 0</div>
+        <div id="game-pause">pause</div>
+      </div>
+    </div>
+
+    <div id="finish-screen">
+      GAME OVER
+      <br />
+      <div id="restart-btn">RESTART</div>
+    </div>
+
     <script src="./js/game.js"></script>
     <script src="./js/figure.js"></script>
     <script src="./js/index.js"></script>
