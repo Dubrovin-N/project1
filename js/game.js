@@ -18,6 +18,7 @@ class Game {
         }
         // if we have 10 cells marked as "dropped"
         if (toggle === 10) {
+          clearLevelSound.play();
           //we cut them out to a new array
           let deletedRow = cells.splice(i * 10 + j - 9, 10);
           // we turn them inactive
@@ -42,6 +43,7 @@ class Game {
   gameOver() {
     let i = 0;
     let flag = false;
+    gameOverSound.play();
     this.interval = setInterval(() => {
       if (!flag && i < 200) {
         cells[i].classList.add("dropped");
@@ -50,6 +52,7 @@ class Game {
       if (!flag && i === 200) {
         flag = true;
         i = 0;
+        gameOverSound.play();
       } else if (flag && i < 200) {
         cells[i].classList.remove("dropped");
         i++;

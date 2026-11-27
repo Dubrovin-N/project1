@@ -11,6 +11,13 @@ const pauseSound = document.querySelector("#pauseSound");
 pauseSound.volume = 0.1;
 const moveSound = document.querySelector("#moveSound");
 moveSound.volume = 0.1;
+const rotateSound = document.querySelector("#rotateSound");
+rotateSound.volume = 0.1;
+const clearLevelSound = document.querySelector("#clearLevelSound");
+clearLevelSound.volume = 0.1;
+const gameOverSound = document.querySelector("#gameOverSound");
+gameOverSound.volume = 0.1;
+
 const game = new Game();
 let pause = false;
 //let figure = [];
@@ -96,29 +103,34 @@ startBtn.addEventListener("click", () => {
    * calling the function to start the figures to drop
    */
   nextFigure();
-});
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "p") {
-    pauseSound.play();
-    pause = !pause;
-    gamePause.classList.toggle("hidden");
-    console.log("pause");
-  }
-  if (pause) {
-    return;
-  }
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "p") {
+      pauseSound.play();
+      pause = !pause;
+      gamePause.classList.toggle("hidden");
+      console.log("pause");
+    }
+    if (pause) {
+      return;
+    }
 
-  if (event.key === "ArrowLeft") {
-    moveSound.play();
-    figure.moveLeft();
-  } else if (event.key === "ArrowRight") {
-    moveSound.play();
-    figure.moveRight();
-  } else if (event.key === "r") {
-    figure.rotate();
-  } else if (event.key === "ArrowDown") {
-    moveSound.play();
-    figure.fastDrop();
-  }
+    if (event.key === "ArrowLeft") {
+      moveSound.currentTime = 0; //to articulate each sound
+      moveSound.play();
+      figure.moveLeft();
+    } else if (event.key === "ArrowRight") {
+      moveSound.currentTime = 0; //to articulate each sound
+      moveSound.play();
+      figure.moveRight();
+    } else if (event.key === "r") {
+      rotateSound.currentTime = 0; //to articulate each sound
+      rotateSound.play();
+      figure.rotate();
+    } else if (event.key === "ArrowDown") {
+      moveSound.currentTime = 0; //to articulate each sound
+      moveSound.play();
+      figure.fastDrop();
+    }
+  });
 });
