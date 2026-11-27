@@ -65,3 +65,11 @@
 .dropped {
   background-color: red;
 }
+
+.hidden {
+  display: none;
+}
+
+#game-pause {
+  padding: 10px;
+}

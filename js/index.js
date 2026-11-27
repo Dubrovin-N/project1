@@ -6,6 +6,7 @@ const finishScreen = document.querySelector("#finish-screen");
 const restartBtn = document.querySelector("#restart-btn");
 const scoreNmb = document.querySelector("#score-number");
 const levelNmb = document.querySelector("#level-number");
+const gamePause = document.querySelector("#game-pause");
 const game = new Game();
 let pause = false;
 //let figure = [];
@@ -96,6 +97,7 @@ startBtn.addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "p") {
     pause = !pause;
+    gamePause.classList.toggle("hidden");
     console.log("pause");
   }
   if (pause) {
