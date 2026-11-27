@@ -7,6 +7,10 @@ const restartBtn = document.querySelector("#restart-btn");
 const scoreNmb = document.querySelector("#score-number");
 const levelNmb = document.querySelector("#level-number");
 const gamePause = document.querySelector("#game-pause");
+const pauseSound = document.querySelector("#pauseSound");
+pauseSound.volume = 0.1;
+const moveSound = document.querySelector("#moveSound");
+moveSound.volume = 0.1;
 const game = new Game();
 let pause = false;
 //let figure = [];
@@ -96,6 +100,7 @@ startBtn.addEventListener("click", () => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "p") {
+    pauseSound.play();
     pause = !pause;
     gamePause.classList.toggle("hidden");
     console.log("pause");
@@ -105,12 +110,15 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (event.key === "ArrowLeft") {
+    moveSound.play();
     figure.moveLeft();
   } else if (event.key === "ArrowRight") {
+    moveSound.play();
     figure.moveRight();
   } else if (event.key === "r") {
     figure.rotate();
   } else if (event.key === "ArrowDown") {
+    moveSound.play();
     figure.fastDrop();
   }
 });
